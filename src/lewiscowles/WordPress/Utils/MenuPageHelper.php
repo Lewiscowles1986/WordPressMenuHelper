@@ -34,10 +34,10 @@ class MenuPageHelper {
 	}
 
 	public function settings_page() {
-	    $page = isset($_GET['page']) ? \strtolower( $_GET['page'] ) : 'default';
+	    $page = isset($_GET['page']) ? strtolower( $_GET['page'] ) : 'default';
 
 	    $myOptions = $this->_data[ $page ];
-	    if( \file_exists( $this->_path.'/views/'.$page.'-page.php')) {
+	    if( file_exists( $this->_path.'/views/'.$page.'-page.php')) {
 	        include_once $this->_path.'/views/'.$page.'-page.php';
 	    } else {
 	        include_once $this->_path.'/views/settings-page.php';
@@ -45,7 +45,7 @@ class MenuPageHelper {
 	}
 
 	protected function menuIconURL( $string='' ) {
-		if( ( \stripos($string, '/') !== false ) ) {
+		if( ( stripos($string, '/') !== false ) ) {
 			return \plugins_url( $string, $this->_path );
 		} else {
 			return $string; // URL
@@ -54,18 +54,18 @@ class MenuPageHelper {
 	}
 
 	protected function build_menu( $optGroup ) {
-		if( !\is_array( $optGroup ) ) { return; }
+		if( !is_array( $optGroup ) ) { return; }
     	
-    	$menu_title = ( \isset( $optGroup['menu_title'] ) ? $optGroup['menu_title'] : $optGroup['page_title'] );
-    	$menu_img = ( \isset( $optGroup['menuicon'] ) ? $this->menuIconURL( $optGroup['menuicon'] ) : null );
+    	$menu_title = ( isset( $optGroup['menu_title'] ) ? $optGroup['menu_title'] : $optGroup['page_title'] );
+    	$menu_img = ( isset( $optGroup['menuicon'] ) ? $this->menuIconURL( $optGroup['menuicon'] ) : null );
 
         if( !\isset( $optGroup['menu_submenu'] ) ) {
             \add_menu_page(
                 $optGroup['page_title'],
                 $menu_title,
                 $optGroup['role'],
-                \strtolower( $optGroup['name'] ),
-                \array( $this, 'settings_page' ),
+                strtolower( $optGroup['name'] ),
+                array( $this, 'settings_page' ),
                 $menu_img,
                 $optGroup['priority']
             );
@@ -75,13 +75,13 @@ class MenuPageHelper {
                 $optGroup['page_title'],
                 $menu_title,
                 $optGroup['role'],
-                \strtolower( $optGroup['name'] ),
-                \array( $this, 'settings_page' )
+                strtolower( $optGroup['name'] ),
+                array( $this, 'settings_page' )
             );
         }
 	}
 
 	protected function option_fields() {
-	    $this->_data = \json_decode( @\file_get_contents( $this->_dir . '/data/menu.json' ), true );
+	    $this->_data = json_decode( @file_get_contents( $this->_dir . '/data/menu.json' ), true );
 	}
 }
