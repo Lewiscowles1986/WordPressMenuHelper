@@ -1,0 +1,27 @@
+{
+    "name": "lewiscowles/wordpress-menu-page-system",
+    "description": "Simple Utility class for working with WordPress Menu's & Custom Pages",
+    "type": "module",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7",
+        "satooshi/php-coveralls": "^0.6.1"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Lewis Cowles",
+            "email": "lewiscowles@me.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "lewiscowles": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
