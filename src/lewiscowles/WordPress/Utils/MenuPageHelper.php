@@ -9,6 +9,9 @@ class MenuPageHelper {
 	protected $_data;
 
 	public function __construct( $dir=__DIR__, $path=__FILE__ ) {
+		$this->_dir = $dir;
+		$this->_path = $path;
+		$this->option_fields();
 		\add_action( 'admin_init', array( $this, 'register_settings' ) );
 		\add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
@@ -37,10 +40,10 @@ class MenuPageHelper {
 		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
 
 		$myOptions = $this->_data[ $page ];
-		if( file_exists( $this->_path.'/views/'.$page.'-page.php')) {
-			include_once $this->_path.'/views/'.$page.'-page.php';
+		if( file_exists( $this->_dir.'/views/'.$page.'-page.php')) {
+			include_once $this->_dir.'/views/'.$page.'-page.php';
 		} else {
-			include_once $this->_path.'/views/settings-page.php';
+			include_once $this->_dir.'/views/settings-page.php';
 		}
 	}
 
@@ -67,7 +70,7 @@ class MenuPageHelper {
 				strtolower( $optGroup['name'] ),
 				array( $this, 'settings_page' ),
 				$menu_img,
-				$optGroup['priority']
+				isset( $optGroup['priority'] ) ? $optGroup['priority'] : null
 			);
 		} else {
 			\add_submenu_page(
@@ -82,6 +85,7 @@ class MenuPageHelper {
 	}
 
 	protected function option_fields() {
-		$this->_data = json_decode( @file_get_contents( $this->_dir . '/data/menu.json' ), true );
+		$menuData = file_get_contents( $this->_dir . '/data/menu.json' );
+		$this->_data = json_decode( $menuData, true );
 	}
 }
