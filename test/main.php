@@ -19,21 +19,21 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @expectedException Exception
+	 * @expectedException \Exception
 	 */
 	public function testRegisterSettingsException() {
 		$this->menuHelper->register_settings();
 	}
 	
 	/**
-	 * @expectedException Exception
+	 * @expectedException \Exception
 	 */
 	public function testAddMenuException() {
 		$this->menuHelper->add_menu();
 	}
 	
 	/**
-	 * @expectedException Exception
+	 * @expectedException \Exception
 	 */
 	public function testSettingsPageException() {
 		$this->menuHelper->settings_page();
