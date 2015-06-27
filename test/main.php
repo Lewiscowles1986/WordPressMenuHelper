@@ -17,5 +17,26 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( $menuHelperInst instanceof  MenuPageHelper );
 		$this->assertTrue( $this->menuHelper instanceof  MenuPageHelper );
 	}
+	
+	/**
+	 * @expectedException Exception
+	 */
+	public function testRegisterSettingsException() {
+		$this->menuHelper->register_settings();
+	}
+	
+	/**
+	 * @expectedException Exception
+	 */
+	public function testAddMenuException() {
+		$this->menuHelper->add_menu();
+	}
+	
+	/**
+	 * @expectedException Exception
+	 */
+	public function testSettingsPageException() {
+		$this->menuHelper->settings_page();
+	}
 
 }
