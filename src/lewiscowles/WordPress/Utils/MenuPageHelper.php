@@ -14,7 +14,7 @@ class MenuPageHelper {
 	}
 
 	public function add_menu() {
-		if( !is_array( $this->_data ) ) { throw new Exception('There seems to be an issue with the format of our data'); return; }
+		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
 
 		//create new top-level menu
 		foreach( $this->_data as $optGroup ) {
@@ -23,7 +23,7 @@ class MenuPageHelper {
 	}
 
 	public function register_settings() {
-		if( !is_array( $this->_data ) ) { throw new Exception('There seems to be an issue with the format of our data'); return; }
+		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
 
 		foreach( $this->_data as $optGroup ) {
 			foreach($optGroup['options'] as $option) {
@@ -34,7 +34,7 @@ class MenuPageHelper {
 
 	public function settings_page() {
 		$page = isset($_GET['page']) ? strtolower( $_GET['page'] ) : 'default';
-		if( !is_array( $this->_data ) ) { throw new Exception('There seems to be an issue with the format of our data'); return; }
+		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
 
 		$myOptions = $this->_data[ $page ];
 		if( file_exists( $this->_path.'/views/'.$page.'-page.php')) {
