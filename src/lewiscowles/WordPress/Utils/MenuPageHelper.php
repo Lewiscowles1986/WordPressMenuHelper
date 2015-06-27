@@ -6,7 +6,7 @@ class MenuPageHelper {
 
 	protected $_dir = '';
 	protected $_path = '';
-	protected $_data = [];
+	protected $_data;
 
 	public function __construct( $dir=__DIR__, $path=__FILE__ ) {
 		\add_action( 'admin_init', array( $this, 'register_settings' ) );
