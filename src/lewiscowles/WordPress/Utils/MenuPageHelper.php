@@ -59,7 +59,7 @@ class MenuPageHelper {
     	$menu_title = ( isset( $optGroup['menu_title'] ) ? $optGroup['menu_title'] : $optGroup['page_title'] );
     	$menu_img = ( isset( $optGroup['menuicon'] ) ? $this->menuIconURL( $optGroup['menuicon'] ) : null );
 
-        if( !\isset( $optGroup['menu_submenu'] ) ) {
+        if( !isset( $optGroup['menu_submenu'] ) ) {
             \add_menu_page(
                 $optGroup['page_title'],
                 $menu_title,
