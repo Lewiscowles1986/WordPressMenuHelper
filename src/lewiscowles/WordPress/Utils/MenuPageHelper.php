@@ -13,7 +13,7 @@ class MenuPageHelper {
 		\add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
 
-	public function add_menu( $data ) {
+	public function add_menu() {
 		if( !is_array( $this->_data ) ) { throw new Exception('There seems to be an issue with the format of our data'); return; }
 
 		//create new top-level menu
