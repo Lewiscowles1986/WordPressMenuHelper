@@ -1,5 +1,5 @@
 <div class="wrap">
-<h2><?php echo $myOptions['page_title']; ?></h2>
+<h2><?php echo ( isset($myOptions['page_title']) ? $myOptions['page_title'] : '' ); ?></h2>
 <p>&nbsp;</p>
 <form method="post" action="options.php">
     <?php settings_fields( $myOptions['group'] ); ?>
