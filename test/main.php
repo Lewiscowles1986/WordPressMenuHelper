@@ -147,4 +147,32 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( $this->menuHelper->parse_menu_priority( $payload ) == 99 );
         }
 
+	public function testMenuPage() {
+		$payload = array(
+			"title" => "Test", 
+			"page_title" => "settings",  
+			"sub_menu" => "settings", 
+			"role" => "administrator", 
+			"group" => "uniq-string", 
+			"priority" => 5, 
+			"icon" => "dashicons dashicons-format-quote" 
+		);
+		$this->expectOutputRegex( 'WordPress add_menu_page' );
+		$this->menuHelper->add_top_level_menu( $payload );
+	}
+
+	public function testSubMenuPage() {
+		$payload = array(
+			"title" => "Test", 
+			"page_title" => "settings",  
+			"sub_menu" => "settings", 
+			"role" => "administrator", 
+			"group" => "uniq-string", 
+			"priority" => 5, 
+			"icon" => "dashicons dashicons-format-quote" 
+		);
+		$this->expectOutputRegex( 'WordPress add_submenu_page' );
+		$this->menuHelper->add_sub_menu( $payload );
+	}
+
 }
