@@ -96,5 +96,39 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
 		$this->assertEquals( $menuHelperInst->get_data(), [] )
 	}
+	
+	public function testDashIconAsset() {
+		$this->assertEquals( $this->menuHelper->parse_asset_url('dashicons dashicons-format-quote'), 'dashicons dashicons-format-quote' );
+	}
+	
+	public function testURLIconAsset() {
+		$this->assertEquals( $this->menuHelper->parse_asset_url('//google.co.uk/bob.jpg'), '//google.co.uk/bob.jpg' );
+		$this->assertEquals( $this->menuHelper->parse_asset_url('http://google.co.uk/bob.jpg'), 'http://google.co.uk/bob.jpg' );
+		$this->assertEquals( $this->menuHelper->parse_asset_url('https://google.co.uk/bob.jpg'), 'https://google.co.uk/bob.jpg' );
+	}
+	
+	public function testLocalIconAsset() {
+		$this->assertTrue( $this->menuHelper->parse_asset_url('/google.co.uk/bob.jpg') !== '//google.co.uk/bob.jpg' );
+	}
+        
+        public function testMenuIconNull() {
+        	$this->assertTrue( is_null( $this->menuHelper->parse_menu_icon( array('bob'=>'dylan') ) ) );
+        }
+        
+        public function testMenuIconExists() {
+        	$this->assertTrue( !is_null( $this->menuHelper->parse_menu_icon( array('menuicon'=>'dashicons dashicons-format-quote') ) ) );
+        }
+
+	public function testParsingMenuTitle() {
+		$this->assertTrue( $this->menuHelper->parse_menu_title( array('menu_title'=>'munchkin') ) == 'munchkin' );
+		$this->assertTrue( $this->menuHelper->parse_menu_title( array('page_title'=>'bob') ) == 'bob' );
+		$this->assertTrue( $this->menuHelper->parse_menu_title( array('page_title'=>'bob','menu_title'=>'pappus') ) == 'pappus' );
+        }
+
+	public function testParseMenuPriority() {
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>50) ) == 50 );
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>'jim') ) 0 );
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('foglight'=>50) ) 99 );
+        }
 
 }
