@@ -45,11 +45,11 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	public function testDataFilesExist() {
-		$this->assertTrue( file_exists( $this->menuHelper->getDataFilePath() ) );
+		$this->assertTrue( file_exists( $this->menuHelper->data_file_path() ) );
 	}
 	
 	public function testDataFileFormat() {
-		$this->assertContains( __DIR__, $this->menuHelper->getDataFilePath() );
+		$this->assertContains( __DIR__, $this->menuHelper->data_file_path() );
 	}
 
 }
