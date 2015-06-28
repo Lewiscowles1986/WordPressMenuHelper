@@ -1,9 +1,13 @@
+<?php
+$page_title = ( isset($myOptions['page_title']) ? $myOptions['page_title'] : '' );
+$group = ( isset($myOptions['group']) ? $myOptions['group'] : '' );
+?>
 <div class="wrap">
-<h2><?php echo ( isset($myOptions['page_title']) ? $myOptions['page_title'] : '' ); ?></h2>
+<h2><?php echo $page_title; ?></h2>
 <p>&nbsp;</p>
 <form method="post" action="options.php">
-    <?php settings_fields( $myOptions['group'] ); ?>
-    <?php do_settings_sections( $myOptions['group'] ); ?>
+    <?php settings_fields( $group ); ?>
+    <?php do_settings_sections( $group ); ?>
     <div class="row">
         <div class="col">
         <?php foreach($myOptions['options'] as $n => $option) : ?>
