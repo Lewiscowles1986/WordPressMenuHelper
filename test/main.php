@@ -8,7 +8,9 @@ class MainTest extends \PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->menuHelper = new MenuPageHelper( __DIR__, __FILE__ );
+		$dir = __DIR__;
+		$path = __FILE__;
+		$this->menuHelper = new MenuPageHelper( $dir, $path );
 
 	}
 
