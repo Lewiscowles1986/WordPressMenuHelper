@@ -158,10 +158,11 @@ class MenuPageHelper {
 	}
 	
 	public function get_data_file() {
-		try {
-			return file_get_contents( $this->data_file_path() );
-		} catch( \Error $e ) {
-			throw new \Exception( "An issue loading the menu file '".$this->data_file_path()."'" );
+		$data_file_path = $this->data_file_path();
+		if( file_exists( $data_file_path ) && (is_readable( $data_file_path ) ) ) {
+			return file_get_contents( $data_file_path );
+		} else {
+			throw new \Exception( "An issue loading the menu file '{$data_file_path}'" );
 		}
 		return "";
 	}
