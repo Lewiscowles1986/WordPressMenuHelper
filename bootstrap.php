@@ -20,3 +20,15 @@ function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $func
 function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function ) {
   echo "WordPress add_submenu_page\n";
 }
+
+function settings_fields( $name ) {
+  echo "Wordpress settings_fields '{$name}'";
+}
+
+function do_settings_sections( $name ) {
+  echo "Wordpress do_settings_sections '{$name}'";
+}
+
+function get_option( $name, $default ) {
+  echo "Wordpress get_option '{$name}' with default: {$default}";
+}
