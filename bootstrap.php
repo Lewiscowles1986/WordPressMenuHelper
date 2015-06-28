@@ -22,13 +22,18 @@ function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, 
 }
 
 function settings_fields( $name ) {
-  echo "Wordpress settings_fields '{$name}'";
+  echo "Wordpress settings_fields '{$name}'\n";
 }
 
 function do_settings_sections( $name ) {
-  echo "Wordpress do_settings_sections '{$name}'";
+  echo "Wordpress do_settings_sections '{$name}'\n";
 }
 
 function get_option( $name, $default ) {
-  echo "Wordpress get_option '{$name}' with default: {$default}";
+  echo "Wordpress get_option '{$name}' with default: {$default}\n";
+}
+
+function submit_button() {
+  echo "Wordpress submit_button\n";
+}
 }
