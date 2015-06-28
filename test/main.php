@@ -88,7 +88,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	
 	public function testGetPage() {
 		$this->assertEquals( $this->menuHelper->get_page_name(), 'default' );
-		$_GET['page'] = bob;
+		$_GET['page'] = 'bob';
 		$this->assertEquals( $this->menuHelper->get_page_name(), 'bob' );
 	}
 
