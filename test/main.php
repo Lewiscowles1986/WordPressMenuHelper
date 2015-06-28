@@ -44,11 +44,11 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$menuHelperInst->settings_page();
 	}
 	
-	public function testDataFilesExist() {
+	public function testDataPathExist() {
 		$this->assertTrue( file_exists( $this->menuHelper->data_file_path() ) );
 	}
 	
-	public function testDataFileFormat() {
+	public function testDataPathFormat() {
 		$this->assertContains( __DIR__, $this->menuHelper->data_file_path() );
 	}
 	
@@ -60,6 +60,30 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse( $this->menuHelper->parse_data( '{bpb:[],}' ) === [] );
 		$this->assertFalse( $this->menuHelper->parse_data( null ) === [] );
 		$this->assertFalse( $this->menuHelper->parse_data( 12345 ) === [] );
+	}
+	
+	/**
+	 * @expectedException \Exception
+	 */
+	public function testGetDataFileNotExist() {
+		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
+		$menuHelperInst->get_data_file();
+	}
+	
+	public function testGetDataFileExist() {
+		$this->menuHelper->get_data_file();
+	}
+	
+	/**
+	 * @expectedException \PHPUnit_Framework_Error_Notice
+	 */
+	public function testGetDataFileNotExist() {
+		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
+		$menuHelperInst->option_fields();
+	}
+	
+	public function testGetDataFileExist() {
+		$this->menuHelper->option_fields();
 	}
 
 }
