@@ -201,5 +201,10 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->expectOutputRegex( "/WordPress add_submenu_page/" );
 		
 	}
+	
+	public function testUpdateViewUpdated() {
+		$this->menuHelper->updated_view( array( 'settings-updated' => true ) );
+		$this->expectOutputRegex( "/Settings Saved!/" );
+	}
 
 }
