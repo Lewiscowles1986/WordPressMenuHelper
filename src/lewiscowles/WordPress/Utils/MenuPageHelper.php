@@ -38,7 +38,13 @@ class MenuPageHelper {
 	public function settings_page() {
 		$page = isset($_GET['page']) ? strtolower( $_GET['page'] ) : 'default';
 		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
-
+		if(isset($_GET['settings-updated'])) {
+			if($_GET['settings-updated']) : ?>
+				<div id="message" class="updated fade"><p><strong>Settings Saved!</strong></p></div>
+    		<?php else: ?>
+        		<div id="message" class="error"><p><strong>Failure Saving Changes!</strong></p></div>
+    		<?php endif;
+    	}
 		$myOptions = $this->_data[ $page ];
 		if( file_exists( $this->_dir.'/views/'.$page.'-page.php')) {
 			include_once $this->_dir.'/views/'.$page.'-page.php';
@@ -85,7 +91,11 @@ class MenuPageHelper {
 	}
 
 	protected function option_fields() {
-		$menuData = file_get_contents( $this->_dir . '/data/menu.json' );
-		$this->_data = json_decode( $menuData, true );
+		$menuData = @file_get_contents( $this->_dir . '/data/menu.json' );
+		if( strlen($menuData."") < 1 ) {
+			$this->_data = json_decode( $menuData, true );
+		} else {
+			throw new Exception( "An issue loading the menu file '{$this->_dir}/data/menu.json'" );
+		}
 	}
 }
