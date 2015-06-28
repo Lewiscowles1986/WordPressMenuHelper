@@ -99,7 +99,7 @@ class MenuPageHelper {
 		if( strlen($menuData."") < 1 ) {
 			$this->_data = json_decode( $menuData, true );
 		} else {
-			throw new Exception( "An issue loading the menu file '".$this->getDataFilePath()."'" );
+			throw new \Exception( "An issue loading the menu file '".$this->getDataFilePath()."'" );
 		}
 	}
 }
