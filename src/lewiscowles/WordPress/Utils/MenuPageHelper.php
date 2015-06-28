@@ -79,13 +79,11 @@ class MenuPageHelper {
 	}
 
 	public function parse_asset_url( $string='' ) {
-		$protocol_terminator_pos = stripos($string, '/');
-		if( ( $protocol_terminator_pos === false ) && ( stripos($string, 'dashicon') !== false ) ) { // not url or dashicon
+		$protocol_terminator_pos = stripos($string, '//');
+		if( ( $protocol_terminator_pos === false ) && ( stripos($string, 'dashicon') === false ) ) { // not url or dashicon
 			return \plugins_url( $string, $this->_path );
-		} else { // dashicon or URL
-			return $string; // URL
-		}
-		return null;
+		} 
+		return $string;
 	}
 	
 	public function parse_menu_icon( &$data ) {
