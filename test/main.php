@@ -25,7 +25,8 @@ class MainTest extends \PHPUnit_Framework_TestCase
      	 * @expectedExceptionMessage There seems to be an issue with the format of our data
 	 */
 	public function testRegisterSettingsException() {
-		$this->menuHelper->register_settings();
+		$menuHelperInst = new MenuPageHelper();
+		$menuHelperInst->register_settings();
 	}
 	
 	/**
@@ -33,7 +34,8 @@ class MainTest extends \PHPUnit_Framework_TestCase
      	 * @expectedExceptionMessage There seems to be an issue with the format of our data
 	 */
 	public function testAddMenuException() {
-		$this->menuHelper->add_menu();
+		$menuHelperInst = new MenuPageHelper();
+		$menuHelperInst->add_menu();
 	}
 	
 	/**
@@ -41,7 +43,8 @@ class MainTest extends \PHPUnit_Framework_TestCase
      	 * @expectedExceptionMessage There seems to be an issue with the format of our data
 	 */
 	public function testSettingsPageException() {
-		$this->menuHelper->settings_page();
+		$menuHelperInst = new MenuPageHelper();
+		$menuHelperInst->settings_page();
 	}
 	
 	public function testDataFilesExist() {
