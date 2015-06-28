@@ -77,12 +77,12 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \PHPUnit_Framework_Error_Notice
 	 */
-	public function testGetDataFileNotExist() {
+	public function testGetOptionFieldsInvalid() {
 		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
 		$menuHelperInst->option_fields();
 	}
 	
-	public function testGetDataFileExist() {
+	public function testGetOptionFields() {
 		$this->menuHelper->option_fields();
 	}
 
