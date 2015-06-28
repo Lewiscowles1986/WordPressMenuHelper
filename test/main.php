@@ -94,7 +94,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	
 	public function testGetData() {
 		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
-		$this->assertEquals( $menuHelperInst->get_data(), [] )
+		$this->assertEquals( $menuHelperInst->get_data(), [] );
 	}
 	
 	public function testDashIconAsset() {
