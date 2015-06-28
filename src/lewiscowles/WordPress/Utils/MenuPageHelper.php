@@ -96,7 +96,7 @@ class MenuPageHelper {
 
 	protected function option_fields() {
 		$menuData = @file_get_contents( $this->getDataFilePath() );
-		if( strlen($menuData."") < 1 ) {
+		if( strlen($menuData."") > 0 ) {
 			$this->_data = json_decode( $menuData, true );
 		} else {
 			throw new \Exception( "An issue loading the menu file '".$this->getDataFilePath()."'" );
