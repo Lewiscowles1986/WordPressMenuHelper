@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 function add_action( $name, callable $func ) {
-  echo WordPress add_action '{$name}'\n";
+  echo "WordPress add_action '{$name}'\n";
 }
 
 function register_setting( $group, $name ) {
