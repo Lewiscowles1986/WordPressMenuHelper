@@ -83,7 +83,7 @@ class MenuPageHelper {
 		if( ( $protocol_terminator_pos === false ) && ( stripos($string, 'dashicon') === false ) ) { // not url or dashicon
 			return \plugins_url( $string, $this->_path );
 		} 
-		eturn $string;
+		return $string;
 	}
 	
 	public function parse_menu_icon( &$data ) {
