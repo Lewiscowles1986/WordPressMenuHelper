@@ -174,5 +174,32 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->expectOutputRegex( "/WordPress add_submenu_page/" );
 		$this->menuHelper->add_sub_menu( $payload );
 	}
+	
+	public function testParseMenuData() {
+		$payload = array(
+			"name" => "uniq-advanced-settings",
+			"menu_submenu" => "settings",
+			"menu_title" => "Test",
+			"page_title" => "settings",
+			"role" => "administrator"
+		);
+		$result = $this->menuHelper->parse_menu_data( $payload );
+		$this->assertTrue( is_array( $result ) );
+		$this->assertTrue( isset($result['title'] ) );
+		$this->assertTrue( isset($result['group'] ) );
+	}
+	
+	public function testBuildMenu() {
+		$payload = array(
+			"name" => "uniq-advanced-settings",
+			"menu_submenu" => "settings",
+			"menu_title" => "Test",
+			"page_title" => "settings",
+			"role" => "administrator"
+		);
+		$this->menuHelper->build_menu( $payload );
+		$this->expectOutputRegex( "/WordPress add_submenu_page/" );
+		
+	}
 
 }
