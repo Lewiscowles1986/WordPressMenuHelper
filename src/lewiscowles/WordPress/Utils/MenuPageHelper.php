@@ -44,13 +44,17 @@ class MenuPageHelper {
     		<?php else: ?>
         		<div id="message" class="error"><p><strong>Failure Saving Changes!</strong></p></div>
     		<?php endif;
-    	}
+    		}
 		$myOptions = $this->_data[ $page ];
 		if( file_exists( $this->_dir.'/views/'.$page.'-page.php')) {
 			include_once $this->_dir.'/views/'.$page.'-page.php';
 		} else {
 			include_once $this->_dir.'/views/settings-page.php';
 		}
+	}
+	
+	public function getDataFilePath() {
+		return $this->_dir . '/data/menu.json';
 	}
 
 	protected function menuIconURL( $string='' ) {
@@ -91,11 +95,11 @@ class MenuPageHelper {
 	}
 
 	protected function option_fields() {
-		$menuData = @file_get_contents( $this->_dir . '/data/menu.json' );
+		$menuData = @file_get_contents( $this->getDataFilePath() );
 		if( strlen($menuData."") < 1 ) {
 			$this->_data = json_decode( $menuData, true );
 		} else {
-			throw new Exception( "An issue loading the menu file '{$this->_dir}/data/menu.json'" );
+			throw new Exception( "An issue loading the menu file '".$this->getDataFilePath()."'" );
 		}
 	}
 }
