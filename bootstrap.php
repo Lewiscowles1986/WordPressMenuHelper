@@ -2,21 +2,21 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 function add_action( $name, callable $func ) {
-  throw new \Exception('WordPress add_action');
+  trigger_error('WordPress add_action', E_USER_NOTICE);
 }
 
 function register_setting( $group, $name ) {
-  throw new \Exception('WordPress register_setting');
+  trigger_error('WordPress register_setting', E_USER_NOTICE);
 }
 
 function plugins_url( $filepath, $relative_to='' ) {
-  throw new \Exception('WordPress plugins_url');
+  trigger_error('WordPress plugins_url', E_USER_NOTICE);
 }
 
 function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position ) {
-  throw new \Exception('WordPress add_menu_page');
+  trigger_error('WordPress add_menu_page', E_USER_NOTICE);
 }
 
 function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function ) {
-  throw new \Exception('WordPress add_submenu_page');
+  trigger_error('WordPress add_submenu_page', E_USER_NOTICE);
 }
