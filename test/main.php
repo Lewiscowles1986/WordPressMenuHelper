@@ -128,7 +128,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	public function testParseMenuPriority() {
 		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>50) ) == 50 );
 		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>'jim') ) == 0 );
-		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('foglight'=>50) ) 99 );
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('foglight'=>50) ) == 99 );
         }
 
 }
