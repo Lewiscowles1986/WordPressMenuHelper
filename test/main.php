@@ -209,7 +209,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	
 	public function testUpdateViewSettingsPage() {
 		$this->menuHelper->settings_page();
-		$this->expectOutputRegex( "/settings-page.css/" );
+		$this->expectOutputRegex( "/rel=[\"]stylesheet[\"]/" );
 	}
 	
 
