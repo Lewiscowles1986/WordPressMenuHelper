@@ -5,23 +5,13 @@ use lewiscowles\WordPress\Utils\MenuPageHelper;
 class MainTest extends \PHPUnit_Framework_TestCase
 {
 	protected $menuHelper;
-	protected $exception_on_load = false;
 	
 
 	public function setUp()
 	{
 		$dir = __DIR__;
 		$path = __FILE__;
-		try {
-			$this->menuHelper = new MenuPageHelper( $dir, $path );
-		} catch( \Error $e ) {
-			$this->exception_on_load = ($e->getMessage() == 'WordPress add_action');
-		}
-
-	}
-	
-	public function testWordPressExceptionThrownOnLoad() {
-		$this->assertTrue( $this->exception_on_load );
+		$this->menuHelper = new MenuPageHelper( $dir, $path );
 	}
 
 	public function testConstruct() {
