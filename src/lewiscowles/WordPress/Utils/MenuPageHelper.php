@@ -13,14 +13,14 @@ class MenuPageHelper {
 		$this->_path = $path;
 		$this->option_fields();
 		\add_action( 'admin_init', array( $this, 'register_settings' ) );
-		\add_action( 'admin_menu', array( $this, 'add_menu' ) );
+		\add_action( 'admin_menu', array( $this, 'add_menu' ), 99 );
 	}
 
 	public function add_menu() {
 		if( !is_array( $this->_data ) ) { throw new \Exception('There seems to be an issue with the format of our data'); return; }
 
 		//create new top-level menu
-		foreach( $this->_data as $optGroup ) {
+		foreach( $this->_data as $name => $optGroup ) {
 			$this->build_menu( $optGroup );
 		}
 	}
@@ -57,7 +57,7 @@ class MenuPageHelper {
 		return $this->_dir . '/data/menu.json';
 	}
 
-	protected function menuIconURL( $string='' ) {
+	public function menuIconURL( $string='' ) {
 		if( ( stripos($string, '/') !== false ) ) {
 			return \plugins_url( $string, $this->_path );
 		} else {
@@ -66,8 +66,9 @@ class MenuPageHelper {
 		return null;
 	}
 
-	protected function build_menu( $optGroup ) {
+	public function build_menu( $optGroup ) {
 		if( !is_array( $this->_data ) ) { throw new Exception('There seems to be an issue with the format of our data'); return; }
+		$priority = ( isset( $optGroup['priority'] ) ? max( intval( $optGroup['priority'] ), 0) : 99 );
 
 		$menu_title = ( isset( $optGroup['menu_title'] ) ? $optGroup['menu_title'] : $optGroup['page_title'] );
 		$menu_img = ( isset( $optGroup['menuicon'] ) ? $this->menuIconURL( $optGroup['menuicon'] ) : null );
@@ -80,7 +81,7 @@ class MenuPageHelper {
 				strtolower( $optGroup['name'] ),
 				array( $this, 'settings_page' ),
 				$menu_img,
-				isset( $optGroup['priority'] ) ? $optGroup['priority'] : null
+				$priority
 			);
 		} else {
 			\add_submenu_page(
