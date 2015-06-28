@@ -79,7 +79,7 @@ class MenuPageHelper {
 	}
 
 	public function parse_asset_url( $string='' ) {
-		$protocol_terminator_pos = stripos($string, '/');
+		$protocol_terminator_pos = stripos($string, '//');
 		if( ( $protocol_terminator_pos === false ) && ( stripos($string, 'dashicon') !== false ) ) { // not url or dashicon
 			return \plugins_url( $string, $this->_path );
 		} else { // dashicon or URL
