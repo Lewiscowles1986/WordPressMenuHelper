@@ -75,7 +75,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @expectedException \PHPUnit_Framework_Error_Notice
+	 * @expectedException \Exception
 	 */
 	public function testGetOptionFieldsInvalid() {
 		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
