@@ -45,7 +45,7 @@ class MenuPageHelper {
         		<div id="message" class="error"><p><strong>Failure Saving Changes!</strong></p></div>
     		<?php endif;
     		}
-		$myOptions = $this->_data[ $page ];
+		$myOptions = isset($this->_data[ $page ]) ? $this->_data[ $page ] : [];
 		if( file_exists( $this->_dir.'/views/'.$page.'-page.php')) {
 			include_once $this->_dir.'/views/'.$page.'-page.php';
 		} else {
