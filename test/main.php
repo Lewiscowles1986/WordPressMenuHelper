@@ -15,7 +15,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 
 	public function testConstruct() {
-		$menuHelperInst = new MenuPageHelper();
+		$menuHelperInst = new MenuPageHelper(__DIR__,__FILE__);
 		$this->assertTrue( $menuHelperInst instanceof  MenuPageHelper );
 		$this->assertTrue( $this->menuHelper instanceof  MenuPageHelper );
 	}
