@@ -86,6 +86,10 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->menuHelper->option_fields();
 	}
 	
+	public function testGetPageData() {
+		$this->assertTrue( is_array( $this->menuHelper->get_page_data() ) );
+	}
+	
 	public function testGetPage() {
 		$this->assertEquals( $this->menuHelper->get_page_name(), 'default' );
 		$_GET['page'] = 'bob';
