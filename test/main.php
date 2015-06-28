@@ -87,7 +87,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	public function testGetPageData() {
-		$this->assertTrue( is_array( $this->menuHelper->get_page_data() ) );
+		$this->assertTrue( is_array( $this->menuHelper->get_page_data( 'nonexistant' ) ) );
 	}
 	
 	public function testGetPage() {
