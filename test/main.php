@@ -41,5 +41,9 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	public function testSettingsPageException() {
 		$this->menuHelper->settings_page();
 	}
+	
+	public function testDataFilesExist() {
+		$this->assertTrue( file_exists( $this->menuHelper->getDataFilePath() ) );
+	}
 
 }
