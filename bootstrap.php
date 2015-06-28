@@ -36,4 +36,3 @@ function get_option( $name, $default ) {
 function submit_button() {
   echo "Wordpress submit_button\n";
 }
-}
