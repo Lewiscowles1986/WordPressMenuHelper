@@ -112,23 +112,32 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
         
         public function testMenuIconNull() {
-        	$this->assertTrue( is_null( $this->menuHelper->parse_menu_icon( array('bob'=>'dylan') ) ) );
+        	$payload = array('bob'=>'dylan');
+        	$this->assertTrue( is_null( $this->menuHelper->parse_menu_icon( $payload ) ) );
         }
         
         public function testMenuIconExists() {
-        	$this->assertTrue( !is_null( $this->menuHelper->parse_menu_icon( array('menuicon'=>'dashicons dashicons-format-quote') ) ) );
+        	
+        	$payload = array('menuicon'=>'dashicons dashicons-format-quote');
+        	$this->assertTrue( !is_null( $this->menuHelper->parse_menu_icon( $payload ) ) );
         }
 
 	public function testParsingMenuTitle() {
-		$this->assertTrue( $this->menuHelper->parse_menu_title( array('menu_title'=>'munchkin') ) == 'munchkin' );
-		$this->assertTrue( $this->menuHelper->parse_menu_title( array('page_title'=>'bob') ) == 'bob' );
-		$this->assertTrue( $this->menuHelper->parse_menu_title( array('page_title'=>'bob','menu_title'=>'pappus') ) == 'pappus' );
+		$payload = array('menu_title'=>'munchkin');
+		$this->assertTrue( $this->menuHelper->parse_menu_title( $payload ) == 'munchkin' );
+		$payload = array('page_title'=>'bob');
+		$this->assertTrue( $this->menuHelper->parse_menu_title( $payload ) == 'bob' );
+		$payload = array('page_title'=>'bob','menu_title'=>'pappus');
+		$this->assertTrue( $this->menuHelper->parse_menu_title( $payload ) == 'pappus' );
         }
 
 	public function testParseMenuPriority() {
-		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>50) ) == 50 );
-		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('priority'=>'jim') ) == 0 );
-		$this->assertTrue( $this->menuHelper->parse_menu_priority( array('foglight'=>50) ) == 99 );
+		$payload = array('priority'=>50);
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( $payload ) == 50 );
+		$payload = array('priority'=>'jim');
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( $payload ) == 0 );
+		$payload = array('foglight'=>50);
+		$this->assertTrue( $this->menuHelper->parse_menu_priority( $payload ) == 99 );
         }
 
 }
