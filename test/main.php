@@ -206,5 +206,11 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->menuHelper->updated_view( array( 'settings-updated' => true ) );
 		$this->expectOutputRegex( "/Settings Saved!/" );
 	}
+	
+	public function testUpdateViewUpdated() {
+		$this->menuHelper->settings_page();
+		$this->expectOutputRegex( "/settings-page.css/" );
+	}
+	
 
 }
