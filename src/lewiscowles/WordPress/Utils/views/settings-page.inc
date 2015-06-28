@@ -1,6 +1,7 @@
 <?php
 $page_title = ( isset($myOptions['page_title']) ? $myOptions['page_title'] : '' );
 $group = ( isset($myOptions['group']) ? $myOptions['group'] : '' );
+$options = ( isset($myOptions['options']) ? $myOptions['options'] : [] );
 ?>
 <div class="wrap">
 <h2><?php echo $page_title; ?></h2>
@@ -10,7 +11,7 @@ $group = ( isset($myOptions['group']) ? $myOptions['group'] : '' );
     <?php do_settings_sections( $group ); ?>
     <div class="row">
         <div class="col">
-        <?php foreach($myOptions['options'] as $n => $option) : ?>
+        <?php foreach($options as $n => $option) : ?>
             <?php if( is_null( $option ) ): continue; endif; ?>
             <?php if( ( $n + 1 ) % 10 == 0 ) : ?></div><div class="col"><?php endif; ?>
             <?php $opVal = isset($option['default']) ? get_option($option['name'], $option['default']) : get_option($option['name']); ?>
