@@ -51,5 +51,14 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	public function testDataFileFormat() {
 		$this->assertContains( __DIR__, $this->menuHelper->data_file_path() );
 	}
+	
+	public function testDataParseWellFormed() {
+		$this->assertTrue( is_array( $this->menuHelper->parse_data('[]') ) );
+	}
+	
+	public function testDataMalFormed() {
+		$this->assertFalse( !is_array( $this->menuHelper->parse_data( '{bpb:[],}' ) ) );
+		$this->assertFalse( !is_array( $this->menuHelper->parse_data( null ) ) );
+	}
 
 }
