@@ -157,7 +157,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 			"priority" => 5, 
 			"icon" => "dashicons dashicons-format-quote" 
 		);
-		$this->expectOutputRegex( 'WordPress add_menu_page' );
+		$this->expectOutputRegex( "/WordPress add_menu_page/" );
 		$this->menuHelper->add_top_level_menu( $payload );
 	}
 
@@ -171,7 +171,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 			"priority" => 5, 
 			"icon" => "dashicons dashicons-format-quote" 
 		);
-		$this->expectOutputRegex( 'WordPress add_submenu_page' );
+		$this->expectOutputRegex( "/WordPress add_submenu_page/" );
 		$this->menuHelper->add_sub_menu( $payload );
 	}
 
