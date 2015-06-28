@@ -91,5 +91,10 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$_GET['page'] = 'bob';
 		$this->assertEquals( $this->menuHelper->get_page_name(), 'bob' );
 	}
+	
+	public function testGetData() {
+		$menuHelperInst = new MenuPageHelper( ( '/notexist/'.time() ) , md5( time() ) );
+		$this->assertEquals( $menuHelperInst->get_data(), [] )
+	}
 
 }
