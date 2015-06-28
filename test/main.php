@@ -14,7 +14,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$path = __FILE__;
 		try {
 			$this->menuHelper = new MenuPageHelper( $dir, $path );
-		} catch( \Exception $e ) {
+		} catch( \Error $e ) {
 			$this->exception_on_load = ($e->getMessage() == 'WordPress add_action');
 		}
 
