@@ -57,8 +57,9 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	public function testDataMalFormed() {
-		$this->assertFalse( !is_array( $this->menuHelper->parse_data( '{bpb:[],}' ) ) );
-		$this->assertFalse( !is_array( $this->menuHelper->parse_data( null ) ) );
+		$this->assertFalse( $this->menuHelper->parse_data( '{bpb:[],}' ) === [] );
+		$this->assertFalse( $this->menuHelper->parse_data( null ) === [] );
+		$this->assertFalse( $this->menuHelper->parse_data( 12345 ) === [] );
 	}
 
 }
