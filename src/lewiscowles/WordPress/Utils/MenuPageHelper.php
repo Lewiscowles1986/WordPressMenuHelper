@@ -53,9 +53,14 @@ class MenuPageHelper {
     		}
 	}
 
+	public function view_css() { ?>
+	<link rel="stylesheet" href="<?php echo plugins_url('/css/settings-page.css', __FILE__); ?>" /> <?php
+	}
+
 	public function settings_page() {
 		$page = $this->get_page_name();
 		$this->updated_view( $_GET );
+		$this->view_css();
 		$this->render_page($page,$this->get_page_data( $page ));
 	}
 	
