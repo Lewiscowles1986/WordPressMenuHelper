@@ -118,7 +118,7 @@ class MenuPageHelper {
 			'icon' => $this->parse_menu_icon( $data )
 		];
 		if( isset( $data['menu_submenu'] ) ) {
-			$out['menu_submenu'] = $data['menu_submenu'];
+			$out['sub_menu'] = $data['menu_submenu'];
 		}
 		return $out;
 	}
@@ -148,7 +148,7 @@ class MenuPageHelper {
 
 	public function build_menu( $optGroup ) {
 		$data = $this->parse_menu_data( $optGroup );
-		if( !isset( $optGroup['menu_submenu'] ) ) {
+		if( !isset( $data['sub_menu'] ) ) {
 			$this->add_top_level_menu( $data );
 		} else {
 			$this->add_sub_menu( $data );
