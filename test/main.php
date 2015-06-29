@@ -228,8 +228,8 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	public function testBigFace() {
-		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
 		$_GET['page'] = 'cd2_test_main_level';
+		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
 		$menuHelperInst->register_settings();
 		$menuHelperInst->add_menu();
 		$this->assertTrue( true );
