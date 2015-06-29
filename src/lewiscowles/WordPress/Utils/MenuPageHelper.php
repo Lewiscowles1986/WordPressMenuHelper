@@ -38,7 +38,9 @@ class MenuPageHelper {
 
 		foreach( $this->_data as $optGroup ) {
 			foreach($optGroup['options'] as $option) {
-				\register_setting( $optGroup['group'], $option['name'] );
+				if( !is_null( $option ) ) { // it seems we had null options getting through...
+					\register_setting( $optGroup['group'], $option['name'] );
+				}
 			}
 		}
 	}
@@ -69,6 +71,7 @@ class MenuPageHelper {
 		if( file_exists( $specific_view ) ) {
 			include_once $specific_view;
 		} else { // switched to library built-in view (using.inc to avoid coverage for view code)
+			echo "View '{$specific_view}' does not exist...";
 			$built_in = __DIR__.'/views/settings-page.inc';
 			if( file_exists($built_in) ) {
 				include_once $built_in;
@@ -98,16 +101,26 @@ class MenuPageHelper {
 		return ( isset( $data['priority'] ) ? max( intval( $data['priority'] ), 0) : 99 );
 	}
 	
+	public function parse_page_title( &$data ) {
+		return ( isset( $data['page_title'] ) ? $data['page_title'] : '&nbsp;' );
+	}
+	
+	public function parse_menu_group( &$data ) {
+		return strtolower( isset( $data['group'] ) ? $data['group'] : $data['name'] );
+	}
+	
 	public function parse_menu_data( &$data ) {
 		$out = [
 			'title' => $this->parse_menu_title( $data ),
-			'page_title' => $data['page_title'],
-			'sub_menu' => $data['menu_submenu'],
+			'page_title' => $this->parse_page_title( $data ),
 			'role' => $data['role'],
-			'group' => strtolower( $data['name'] ),
+			'group' => $this->parse_menu_group( $data ),
 			'priority' => $this->parse_menu_priority( $data ),
 			'icon' => $this->parse_menu_icon( $data )
 		];
+		if( isset( $data['menu_submenu'] ) ) {
+			$out['sub_menu'] = $data['menu_submenu'];
+		}
 		return $out;
 	}
 	
@@ -136,7 +149,7 @@ class MenuPageHelper {
 
 	public function build_menu( $optGroup ) {
 		$data = $this->parse_menu_data( $optGroup );
-		if( !isset( $optGroup['menu_submenu'] ) ) {
+		if( !isset( $data['sub_menu'] ) ) {
 			$this->add_top_level_menu( $data );
 		} else {
 			$this->add_sub_menu( $data );
@@ -167,9 +180,8 @@ class MenuPageHelper {
 
 	public function option_fields() {
 		$menuData = $this->get_data_file();
-		if( strlen($menuData."") > 0 ) {
-			$this->_data = $this->parse_data( $menuData );
-		} else {
+		$this->_data = $this->parse_data( $menuData );
+		if(!is_array($this->_data)) {
 			trigger_error('Data file was malformed, falling back to empty array...', \E_USER_NOTICE );
 			$this->_data = [];
 		}

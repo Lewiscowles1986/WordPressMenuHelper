@@ -212,5 +212,37 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->expectOutputRegex( "/rel=[\"]stylesheet[\"]/" );
 	}
 	
+	public function testRegisterSettings() {
+		$this->menuHelper->register_settings();
+		$this->assertTrue( true );
+	}
+	
+	public function testAddMenu() {
+		$this->menuHelper->add_menu();
+		$this->assertTrue( true );
+	}
+	
+	public function testGetDataReturnFormat() {
+		$data = $this->menuHelper->get_data();
+		$this->assertTrue( is_array( $data) );
+	}
+	
+	/**
+	 * @expectedException PHPUnit_Framework_Error_Notice
+	 */
+	public function testBrokenJSON() {
+		$_GET['page'] = 'cd2_test_main_level';
+		$menuHelperInst = new MenuPageHelper(__DIR__.'/broken_sample',__FILE__);
+		//$this->assertError('Data file was malformed, falling back to empty array...', E_USER_NOTICE);
+	}
+	
+	public function testBigFace() {
+		$_GET['page'] = 'cd2_test_main_level';
+		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
+		$menuHelperInst->register_settings();
+		$menuHelperInst->add_menu();
+		$menuHelperInst->settings_page();
+		$this->assertTrue( true );
+	}
 
 }
