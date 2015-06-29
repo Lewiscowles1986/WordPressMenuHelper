@@ -227,10 +227,13 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( is_array( $data) );
 	}
 	
+	/**
+	 * @expectedException PHPUnit_Framework_Error_Notice
+	 */
 	public function testBrokenJSON() {
 		$_GET['page'] = 'cd2_test_main_level';
 		$menuHelperInst = new MenuPageHelper(__DIR__.'/broken_sample',__FILE__);
-		$this->assertError('Data file was malformed, falling back to empty array...', E_USER_NOTICE);
+		//$this->assertError('Data file was malformed, falling back to empty array...', E_USER_NOTICE);
 	}
 	
 	public function testBigFace() {
