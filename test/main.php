@@ -212,5 +212,19 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->expectOutputRegex( "/rel=[\"]stylesheet[\"]/" );
 	}
 	
+	public function testRegisterSettings() {
+		$this->menuHelper->register_settings();
+		$this->assertTrue( true );
+	}
+	
+	public function testAddMenu() {
+		$this->menuHelper->add_menu();
+		$this->assertTrue( true );
+	}
+	
+	public function testAddMenu() {
+		$data = $this->menuHelper->get_data();
+		$this->assertTrue( is_array( $data) );
+	}
 
 }
