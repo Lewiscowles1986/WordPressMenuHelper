@@ -30,5 +30,16 @@
 				"type": "text"
 			}
 		]
+	},
+	"cd2_test_main_level": {
+		"name": "cd2_test_main_level",
+		"menu_title": "Test Settings",
+		"page_title": "Sample Test Settings",
+		"role": "administrator",
+		"group": "cd2-test-settings-group",
+		"menuicon": "dashicons dashicons-format-quote",
+		"options": [
+			null
+		]
 	}
 }
