@@ -226,5 +226,12 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$data = $this->menuHelper->get_data();
 		$this->assertTrue( is_array( $data) );
 	}
+	
+	public function testBigFace() {
+		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
+		$this->register_settings();
+		$this->add_menu();
+		$this->assertTrue( true );
+	}
 
 }
