@@ -227,6 +227,14 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( is_array( $data) );
 	}
 	
+	/**
+	 * @expectedException \Exception
+	 */
+	public function testBrokenJSON() {
+		$_GET['page'] = 'cd2_test_main_level';
+		$menuHelperInst = new MenuPageHelper(__DIR__.'/broken_sample',__FILE__);
+	}
+	
 	public function testBigFace() {
 		$_GET['page'] = 'cd2_test_main_level';
 		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
