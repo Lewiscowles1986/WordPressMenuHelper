@@ -232,6 +232,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
 		$menuHelperInst->register_settings();
 		$menuHelperInst->add_menu();
+		$menuHelperInst->settings_page();
 		$this->assertTrue( true );
 	}
 
