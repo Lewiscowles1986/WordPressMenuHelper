@@ -180,9 +180,8 @@ class MenuPageHelper {
 
 	public function option_fields() {
 		$menuData = $this->get_data_file();
-		if( strlen($menuData."") > 0 ) {
-			$this->_data = $this->parse_data( $menuData );
-		} else {
+		$this->_data = $this->parse_data( $menuData );
+		if(!is_array($this->_data)) {
 			trigger_error('Data file was malformed, falling back to empty array...', \E_USER_NOTICE );
 			$this->_data = [];
 		}
