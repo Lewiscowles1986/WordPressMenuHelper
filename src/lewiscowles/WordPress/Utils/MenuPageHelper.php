@@ -71,6 +71,7 @@ class MenuPageHelper {
 		if( file_exists( $specific_view ) ) {
 			include_once $specific_view;
 		} else { // switched to library built-in view (using.inc to avoid coverage for view code)
+			echo "View '{$specific_view}' does not exist..."
 			$built_in = __DIR__.'/views/settings-page.inc';
 			if( file_exists($built_in) ) {
 				include_once $built_in;
