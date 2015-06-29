@@ -1,0 +1,34 @@
+{
+	"cd2_woocommerce": {
+		"name": "cd2_woocommerce",
+		"menu_submenu": "woocommerce",
+		"menu_title": "Advanced Settings",
+		"page_title": "WooCommerce Advanced Settings",
+		"role": "administrator",
+		"group": "cd2-woocommerce-group",
+		"options": [
+			{
+				"name": "products_per_page",
+				"dname": "Products Per Page",
+				"placeholder": 12,
+				"default": 12,
+				"type": "text"
+			},
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			{
+				"name": "products_per_row",
+				"dname": "Products Per Row",
+				"placeholder": 4,
+				"default": 4,
+				"type": "text"
+			}
+		]
+	}
+}
