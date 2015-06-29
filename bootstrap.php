@@ -6,7 +6,7 @@ function add_action( $name, callable $func ) {
 }
 
 function register_setting( $group, $name ) {
-  echo "WordPress register_setting '{$setting}'->'{$name}'\n";
+  echo "WordPress register_setting '{$group}'->'{$name}'\n";
 }
 
 function plugins_url( $filepath, $relative_to='' ) {
