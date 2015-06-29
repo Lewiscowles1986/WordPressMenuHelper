@@ -228,7 +228,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @expectedException \Exception
+	 * @expectedException \Error
 	 */
 	public function testBrokenJSON() {
 		$_GET['page'] = 'cd2_test_main_level';
