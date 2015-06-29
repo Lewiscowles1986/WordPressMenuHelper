@@ -38,7 +38,9 @@ class MenuPageHelper {
 
 		foreach( $this->_data as $optGroup ) {
 			foreach($optGroup['options'] as $option) {
-				\register_setting( $optGroup['group'], $option['name'] );
+				if( !is_null( $option ) ) { // it seems we had null options getting through...
+					\register_setting( $optGroup['group'], $option['name'] );
+				}
 			}
 		}
 	}
