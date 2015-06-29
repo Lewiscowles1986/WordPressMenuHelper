@@ -227,9 +227,6 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( is_array( $data) );
 	}
 	
-	/**
-	 * @expectedException \Error
-	 */
 	public function testBrokenJSON() {
 		$_GET['page'] = 'cd2_test_main_level';
 		$menuHelperInst = new MenuPageHelper(__DIR__.'/broken_sample',__FILE__);
