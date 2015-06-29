@@ -232,7 +232,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$menuHelperInst = new MenuPageHelper(__DIR__.'/sample',__FILE__);
 		$menuHelperInst->register_settings();
 		$menuHelperInst->add_menu();
-		$this->expectOutputRegex( "/[<]h1[>]HEY, I'M THE VIEW FOR THE TEST MAIN LEVEL![<][/]h1[>]/")
+		$this->expectOutputRegex( "/[<]h1[>]HEY, I'M THE VIEW FOR THE TEST MAIN LEVEL![<][/]h1[>]/");
 		$this->assertTrue( true );
 	}
 
