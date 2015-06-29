@@ -100,16 +100,26 @@ class MenuPageHelper {
 		return ( isset( $data['priority'] ) ? max( intval( $data['priority'] ), 0) : 99 );
 	}
 	
+	public function parse_page_title( &$data ) {
+		return ( isset( $data['page_title'] ) ? $data['page_title'] : '&nbsp;' );
+	}
+	
+	public function parse_menu_group( &$data ) {
+		return strtolower( isset( $data['group'] ) ? $data['group'] : $data['name'] );
+	}
+	
 	public function parse_menu_data( &$data ) {
 		$out = [
 			'title' => $this->parse_menu_title( $data ),
-			'page_title' => $data['page_title'],
-			'sub_menu' => $data['menu_submenu'],
+			'page_title' => $this->parse_page_title( $data ),
 			'role' => $data['role'],
-			'group' => strtolower( $data['name'] ),
+			'group' => $this->parse_menu_group( $data ),
 			'priority' => $this->parse_menu_priority( $data ),
 			'icon' => $this->parse_menu_icon( $data )
 		];
+		if( isset( $data['menu_submenu'] ) ) {
+			$out['menu_submenu'] = $data['menu_submenu'];
+		}
 		return $out;
 	}
 	
