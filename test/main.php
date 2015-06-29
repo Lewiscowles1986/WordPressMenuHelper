@@ -222,7 +222,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( true );
 	}
 	
-	public function testAddMenu() {
+	public function testGetDataReturnFormat() {
 		$data = $this->menuHelper->get_data();
 		$this->assertTrue( is_array( $data) );
 	}
